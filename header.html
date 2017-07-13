@@ -1,0 +1,48 @@
+<div class="header">
+    <div class="top">
+        <div class="logo">
+            <a href="index.html"><img src="/${res}/images/top_left.png"></a>
+        </div>
+        <div class="top_right">
+            <div class="right_up">
+                <p class="school"><img src="/${res}/images/home_icon.png"><a href="http://www.swu.edu.cn/ ">校园网首页</a></p>
+            </div>
+            <div class="right_down">
+               	<p class="English"><a href="#">English</a></p><p class="Chinese"><a href="#">中文版</a></p>
+                <div class="search">
+                    <form id="form1" action="${base}/search.jspx" target="_blank" class="searchBox" name="SearchForm" method="get" onsubmit="sumbit1()" target="_blank">
+                        <input name="q" value="${q!' 请输入关键词'}" type="text" id="searchText01" "border="0 "" onfocus="if(this.value==' 请输入关键词')this.value=''" onblur="if(this.value=='')this.value=' 请输入关键词' onclick=" sumbit1() " >
+                        <!-- <input  type="hidden " name="siteId " value="${site.id} "/> -->
+                        <input  name='submit' type="submit " value=" " align="middle " id="searchSubmit01" type="hidden " value="siteId " />      
+                </form>
+                </div> 
+            </div>         
+            <div class="clear "></div>
+        </div>
+    </div>
+
+    <div class="nav ">
+        <ul class="menu ">      
+            [@cms_channel_list]      
+            <li><a  class="active " href="${site.url!} ">首页</a></li>
+                [#list tag_list as c]       
+                    <li>                         
+                        <a href="${c.url} " target="_blank "><span>${c.name}</span></a>
+                        [@cms_channel_list parentId=c.id]
+                            [#if tag_list?size>0] 
+                                <ul>
+                                    [@cms_channel_list parentId=c.id]
+                                    [#list tag_list as c1]
+                                    <li ><span><a href="${c1.url} ">${c1.name}</a><span></li>
+                                    [/#list]
+                                    [/@cms_channel_list]
+                                </ul>
+                            [/#if]
+                        [/@cms_channel_list]
+                    </li>   
+                [/#list]
+            [/@cms_channel_list]
+        </ul>          
+        <div class="clr "></div>
+    </div>
+</div>
